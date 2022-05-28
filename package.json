@@ -1,7 +1,7 @@
 {
-  "name": "osu-parsers",
-  "version": "2.1.2",
-  "description": "A bundle of parsers for osu! file formats based on the osu!lazer source code.",
+  "name": "osu-parsers-web",
+  "version": "3.0.0",
+  "description": "A bundle of parsers for osu! file formats based on the osu!lazer source code, able to run in the browser",
   "exports": {
     "import": "./lib/index.mjs",
     "require": "./lib/index.cjs"
