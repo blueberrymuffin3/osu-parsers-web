@@ -1,6 +1,8 @@
 import { IScore } from 'osu-classes';
 import { ReplayEncoder, SerializationWriter } from './Handlers';
 
+type LZMACompress = (data: string) => Promise<Uint8Array> | Uint8Array
+
 /**
  * Score encoder.
  */
@@ -10,7 +12,7 @@ export class ScoreEncoder {
    * @param score Score info for encoding.
    * @returns A buffer with encoded score & replay data.
    */
-  async encodeToBuffer(score: IScore): Promise<Buffer> {
+  async encodeToBuffer(score: IScore, compress: LZMACompress): Promise<Buffer> {
     const encoded: Buffer = Buffer.from([]);
 
     if (typeof score?.info?.id !== 'number') {
@@ -56,7 +58,7 @@ export class ScoreEncoder {
       const replayData = ReplayEncoder.encodeReplayFrames(score.replay.frames);
 
       writer.writeByte(replayData.length);
-      writer.writeBytes(await ReplayEncoder.compressReplayFrames(replayData));
+      writer.writeBytes(Buffer.from(await compress(replayData)));
     }
 
     writer.writeLong(BigInt(score.info.id));

@@ -1,24 +1,8 @@
-import { LZMA } from 'lzma-native';
 import { LifeBarFrame } from 'osu-classes';
 import { ParsedReplayFrame } from '../../../Replays';
 import { Parsing } from '../../../Utils';
 
 export abstract class ReplayDecoder {
-  static async decompressReplayFrames(bytes: Buffer): Promise<string> {
-    const lzma = LZMA();
-
-    return new Promise((res, rej) => {
-      try {
-        lzma.decompress(bytes, (result) => {
-          res(result.toString());
-        });
-      }
-      catch (err) {
-        rej(err);
-      }
-    });
-  }
-
   static decodeLifeBar(data: string): LifeBarFrame[] {
     if (!data) return [];
 

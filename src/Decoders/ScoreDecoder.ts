@@ -9,6 +9,8 @@ import {
   SerializationReader,
 } from './Handlers';
 
+type LZMADecompress = (data: Uint8Array) => Promise<string> | string
+
 /**
  * Score decoder.
  */
@@ -19,7 +21,7 @@ export class ScoreDecoder {
    * @param parseReplay Should replay be parsed?
    * @returns Decoded score.
    */
-  async decodeFromBuffer(buffer: Buffer, parseReplay = true): Promise<Score> {
+  async decodeFromBuffer(buffer: Buffer, decompress: LZMADecompress, parseReplay = true): Promise<Score> {
     const reader = new SerializationReader(buffer);
     const scoreInfo = new ScoreInfo();
 
@@ -61,7 +63,7 @@ export class ScoreDecoder {
       replay = new Replay();
 
       const compressedBytes = reader.readBytes(replayLength);
-      const replayData = await ReplayDecoder.decompressReplayFrames(compressedBytes);
+      const replayData = await decompress(compressedBytes);
 
       replay.mode = scoreInfo.rulesetId;
       replay.gameVersion = gameVersion;
