@@ -1,4 +1,3 @@
-import { existsSync, readFileSync, statSync } from 'fs';
 import { Beatmap } from 'osu-classes';
 
 import {
@@ -38,29 +37,6 @@ export class BeatmapDecoder {
    * Current storyboard lines.
    */
   private _sbLines: string[] | null = null;
-
-  /**
-   * Performs beatmap decoding from the specified .osu file.
-   * @param path Path to the .osu file.
-   * @param parseSb Should a storyboard be parsed?
-   * @returns Decoded beatmap.
-   */
-  decodeFromPath(path: string, parseSb = true): Beatmap {
-    if (!path.endsWith('.osu')) {
-      throw new Error('Wrong file format! Only .osu files are supported!');
-    }
-
-    if (!existsSync(path)) {
-      throw new Error('File doesn\'t exists!');
-    }
-
-    const str = readFileSync(path).toString();
-    const beatmap = this.decodeFromString(str, parseSb);
-
-    beatmap.fileUpdateDate = statSync(path).mtime;
-
-    return beatmap;
-  }
 
   /**
    * Performs beatmap decoding from a string.

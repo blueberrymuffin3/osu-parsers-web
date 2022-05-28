@@ -1,5 +1,3 @@
-import { writeFileSync } from 'fs';
-
 import { IBeatmap } from 'osu-classes';
 
 import {
@@ -17,19 +15,6 @@ import {
  * Beatmap encoder.
  */
 export class BeatmapEncoder {
-  /**
-   * Performs beatmap encoding to the specified path.
-   * @param path Path for writing the .osu file.
-   * @param beatmap Beatmap for encoding.
-   */
-  encodeToPath(path: string, beatmap: IBeatmap): void {
-    if (!path.endsWith('.osu')) {
-      path += '.osu';
-    }
-
-    writeFileSync(path, this.encodeToString(beatmap));
-  }
-
   /**
    * Performs beatmap encoding to a string.
    * @param beatmap Beatmap for encoding.

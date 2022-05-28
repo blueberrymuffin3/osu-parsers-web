@@ -1,5 +1,3 @@
-import { existsSync, readFileSync } from 'fs';
-
 import {
   Storyboard,
   StoryboardSample,
@@ -41,25 +39,6 @@ export class StoryboardDecoder {
    * Current storyboard lines.
    */
   private _lines: string[] | null = null;
-
-  /**
-   * Performs storyboard decoding from the specified .osb file.
-   * @param path Path to the .osb file.
-   * @returns Decoded storyboard.
-   */
-  decodeFromPath(path: string): Storyboard {
-    if (!path.endsWith('.osb')) {
-      throw new Error('Wrong file format! Only .osb files are supported!');
-    }
-
-    if (!existsSync(path)) {
-      throw new Error('File doesn\'t exists!');
-    }
-
-    const str = readFileSync(path).toString();
-
-    return this.decodeFromString(str);
-  }
 
   /**
    * Performs storyboard decoding from a string.

@@ -1,5 +1,3 @@
-import { readFileSync } from 'fs';
-
 import {
   Score,
   ScoreInfo,
@@ -15,22 +13,6 @@ import {
  * Score decoder.
  */
 export class ScoreDecoder {
-  /**
-   * Performs score decoding from the specified .osr file.
-   * @param path Path to the .osr file.
-   * @param parseReplay Should replay be parsed?
-   * @returns Decoded score.
-   */
-  async decodeFromPath(path: string, parseReplay = true): Promise<Score> {
-    if (!path.endsWith('.osr')) {
-      throw new Error('Wrong file format! Only .osr files are supported!');
-    }
-
-    const buffer = readFileSync(path);
-
-    return this.decodeFromBuffer(buffer, parseReplay);
-  }
-
   /**
    * Performs score decoding from a buffer.
    * @param buffer Buffer with score data.

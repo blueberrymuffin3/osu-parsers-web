@@ -1,4 +1,3 @@
-import { writeFileSync } from 'fs';
 import { IScore } from 'osu-classes';
 import { ReplayEncoder, SerializationWriter } from './Handlers';
 
@@ -6,21 +5,6 @@ import { ReplayEncoder, SerializationWriter } from './Handlers';
  * Score encoder.
  */
 export class ScoreEncoder {
-  /**
-   * Performs score info encoding to the specified path.
-   * @param path Path for writing the .osr file.
-   * @param score Score info for encoding.
-   */
-  async encodeToPath(path: string, score: IScore): Promise<void> {
-    if (!path.endsWith('.osr')) {
-      path += '.osr';
-    }
-
-    const data = await this.encodeToBuffer(score);
-
-    writeFileSync(path, data);
-  }
-
   /**
    * Performs score encoding to a buffer.
    * @param score Score info for encoding.
