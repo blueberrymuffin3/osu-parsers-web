@@ -5,6 +5,8 @@
 !/src/**
 !/tests
 !/tests/**
+!/.github
+!/.github/**
 !.eslintignore
 !.eslintrc.json
 !.gitignore
