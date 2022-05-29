@@ -33,7 +33,7 @@
   "author": "Kionell",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kionell/osu-parsers"
+    "url": "https://github.com/blueberrymuffin3/osu-parsers-web"
   },
   "license": "MIT",
   "devDependencies": {
