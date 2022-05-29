@@ -1,7 +1,7 @@
-# osu-parsers
-[![CodeFactor](https://img.shields.io/codefactor/grade/github/kionell/osu-parsers)](https://www.codefactor.io/repository/github/kionell/osu-parsers)
-[![License](https://img.shields.io/github/license/kionell/osu-parsers)](https://github.com/kionell/osu-parsers/blob/master/LICENSE)
-[![Package](https://img.shields.io/npm/v/osu-parsers)](https://www.npmjs.com/package/osu-parsers)
+# osu-parsers-web
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/blueberrymuffin3/osu-parsers)](https://www.codefactor.io/repository/github/blueberrymuffin3/osu-parsers)
+[![License](https://img.shields.io/github/license/blueberrymuffin3/osu-parsers)](https://github.com/blueberrymuffin3/osu-parsers/blob/master/LICENSE)
+[![Package](https://img.shields.io/npm/v/osu-parsers-web)](https://www.npmjs.com/package/osu-parsers-web)
 
 
 A bundle of parsers for osu! file formats based on the osu!lazer source code.
@@ -16,7 +16,7 @@ A bundle of parsers for osu! file formats based on the osu!lazer source code.
 Add a new dependency to your project via npm:
 
 ```bash
-npm install osu-parsers
+npm install osu-parsers-web
 ```
 
 ## Beatmap decoding
