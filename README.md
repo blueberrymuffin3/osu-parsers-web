@@ -1,6 +1,6 @@
 # osu-parsers-web
-[![CodeFactor](https://img.shields.io/codefactor/grade/github/blueberrymuffin3/osu-parsers)](https://www.codefactor.io/repository/github/blueberrymuffin3/osu-parsers)
-[![License](https://img.shields.io/github/license/blueberrymuffin3/osu-parsers)](https://github.com/blueberrymuffin3/osu-parsers/blob/master/LICENSE)
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/blueberrymuffin3/osu-parsers-web)](https://www.codefactor.io/repository/github/blueberrymuffin3/osu-parsers-web)
+[![License](https://img.shields.io/github/license/blueberrymuffin3/osu-parsers-web)](https://github.com/blueberrymuffin3/osu-parsers-web/blob/master/LICENSE)
 [![Package](https://img.shields.io/npm/v/osu-parsers-web)](https://www.npmjs.com/package/osu-parsers-web)
 
 
