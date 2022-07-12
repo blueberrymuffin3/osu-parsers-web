@@ -1,5 +1,4 @@
 import { IReplayFrame } from 'osu-classes';
-import { ParsedReplayFrame } from '../../../Replays';
 
 export abstract class ReplayEncoder {
   static encodeReplayFrames(frames: IReplayFrame[]): string {
@@ -14,7 +13,7 @@ export abstract class ReplayEncoder {
          */
         const time = Math.round(frame.startTime);
 
-        const parsedFrame = frame as ParsedReplayFrame;
+        const parsedFrame = frame as IReplayFrame;
 
         const encodedData = [
           time - lastTime,

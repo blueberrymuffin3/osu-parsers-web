@@ -1,6 +1,6 @@
 {
   "name": "osu-parsers-web",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "A bundle of parsers for osu! file formats based on the osu!lazer source code, able to run in the browser",
   "exports": {
     "import": "./lib/index.mjs",
@@ -53,6 +53,6 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
-    "osu-classes": "^0.8.0"
+    "osu-classes": "^0.9.0"
   }
 }
