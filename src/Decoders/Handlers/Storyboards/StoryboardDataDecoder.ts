@@ -249,7 +249,11 @@ export abstract class StoryboardDataDecoder {
 
     command.easing = Parsing.parseInt(data[1]);
     command.startTime = Parsing.parseInt(data[2]);
-    command.endTime = Parsing.parseInt(data[3]);
+    if (data[3].trim().length !== 0) {
+      command.endTime = Parsing.parseInt(data[3]);
+    } else {
+      command.endTime = command.startTime
+    }
 
     return command;
   }
