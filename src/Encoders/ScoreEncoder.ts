@@ -13,13 +13,11 @@ export class ScoreEncoder {
    * @returns A buffer with encoded score & replay data.
    */
   async encodeToBuffer(score: IScore, compress: LZMACompress): Promise<Buffer> {
-    const encoded: Buffer = Buffer.from([]);
-
     if (typeof score?.info?.id !== 'number') {
-      return encoded;
+      return Buffer.from([]);
     }
 
-    const writer = new SerializationWriter(encoded);
+    const writer = new SerializationWriter();
 
     writer.writeByte(score.info.rulesetId);
 
@@ -47,22 +45,20 @@ export class ScoreEncoder {
     writer.writeByte(Number(score.info.perfect));
     writer.writeInteger(score.info.mods?.bitwise ?? 0);
 
-    /**
-     * Life frames (HP graph). Not implemented.
-     */
-    writer.writeString('');
+    writer.writeString(ReplayEncoder.encodeLifeBar(score.replay?.lifeBar ?? []));
 
     writer.writeDate(score.info.date);
 
     if (score.replay) {
       const replayData = ReplayEncoder.encodeReplayFrames(score.replay.frames);
+      const encodedData = await compress(replayData);
 
-      writer.writeByte(replayData.length);
-      writer.writeBytes(Buffer.from(await compress(replayData)));
+      writer.writeInteger(encodedData.length);
+      writer.writeBytes(Buffer.from(encodedData));
     }
 
     writer.writeLong(BigInt(score.info.id));
 
-    return encoded;
+    return writer.finish();
   }
 }

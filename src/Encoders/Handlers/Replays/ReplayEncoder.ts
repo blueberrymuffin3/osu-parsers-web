@@ -1,6 +1,12 @@
-import { IReplayFrame } from 'osu-classes';
+import { ILifeBarFrame, IReplayFrame } from 'osu-classes';
 
 export abstract class ReplayEncoder {
+  static encodeLifeBar(frames: ILifeBarFrame[]): string {
+    if (!frames.length) return '';
+
+    return frames.map((f) => `${f.startTime}|${f.health}`).join(',');
+  }
+
   static encodeReplayFrames(frames: IReplayFrame[]): string {
     const encoded = [];
 
